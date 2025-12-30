@@ -52,7 +52,4 @@
     };
 };
 
-&tps43_listener {
-    status = "okay";
-};
 
