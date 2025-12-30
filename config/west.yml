@@ -5,8 +5,6 @@ manifest:
     #- name: petejohanson
     #  url-base: https://github.com/petejohanson
     # nice_oled - nice_epaper - dongle_display!view - oled Adapter
-    - name: mctechnology17
-      url-base: https://github.com/mctechnology17
     - name: AYM1607
       url-base: https://github.com/AYM1607
   projects:
@@ -14,9 +12,6 @@ manifest:
       remote: zmkfirmware
       revision: main
       import: app/west.yml
-    - name: zmk-nice-oled
-      remote: mctechnology17
-      revision: main
     - name: zmk-driver-azoteq-iqs5xx
       remote: AYM1607
       revision: main
