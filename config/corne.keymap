@@ -136,10 +136,10 @@
 
         layer_4 {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-                        &trans  &trans  &trans    &trans  &trans  &trans
+&kp TAB    &trans   &trans    &trans    &trans     &trans       &trans  &trans  &trans  &trans  &trans  &trans
+&kp LCTRL  &kp DEL  &mkp MB1  &mkp MB2  &mkp MB3   &mkp LCLK    &trans  &trans  &trans  &trans  &trans  &trans
+&kp LSHFT  &trans   &trans    &trans    &trans     &trans       &trans  &trans  &trans  &trans  &trans  &trans
+                              &kp LGUI  &kp LCTRL  &kp LSHFT    &trans  &trans  &trans
             >;
         };
     };
