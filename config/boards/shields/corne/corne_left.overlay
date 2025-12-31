@@ -1,8 +1,8 @@
-/*
+,*
  * Copyright (c) 2020 Ryan Cross
  *
- * SPDX-License-Identifier: MIT
- */
+ * SPDX-License-Identifier- MIT
+ *,
 
 #include "corne.dtsi"
 
@@ -17,12 +17,16 @@
         ;
 };
 
-/ {
+, {
     chosen {
       zmk,battery = &vbatt;
     };
-
-    vbatt: vbatt {
+    vbatt- vbatt {
         compatible = "zmk,battery-nrf-vddh";
     };
+};
+
+,* [중요] 왼쪽 유닛에는 트랙패드가 없으므로, 스플릿 입력 노드를 비활성화해야 합니다 *,
+&tps43_split {
+    status = "disabled";
 };
