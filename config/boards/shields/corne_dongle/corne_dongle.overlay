@@ -1,9 +1,8 @@
 /*
- * Corne Dongle Overlay (Studio Enabled + Trackpad Listener Fixed)
+ * Corne Dongle Overlay (Studio Enabled + Fixed)
  */
 
 #include <dt-bindings/zmk/matrix_transform.h>
-/* 트랙패드 데이터 처리를 위한 필수 라이브러리 추가 */
 #include <dt-bindings/zmk/input_transform.h>
 #include <input/processors.dtsi>
 #include <layouts/foostan/corne/6column.dtsi>
@@ -27,7 +26,7 @@
         events = <0>;
     };
 
-    /* === 네가 쓰던 논리와 맞춘 transform === */
+    /* === Transform 설정 === */
     default_transform: keymap_transform {
         compatible = "zmk,matrix-transform";
         rows = <4>;
@@ -48,29 +47,25 @@
         >;
     };
 
-    /* * === 트랙패드 데이터 수신 설정 (중요!) === 
-     * 동글(Central)은 무선으로 날아오는 트랙패드 데이터를 받아야 합니다.
-     * 아래 코드가 없으면 "undefined node" 에러가 발생합니다.
+    /* * === 트랙패드 데이터 수신 컨테이너 === 
+     * 수정됨: 부모 노드(split_inputs)에서 compatible을 제거했습니다.
      */
-    
     split_inputs {
-        compatible = "zmk,input-split";
         #address-cells = <1>;
         #size-cells = <0>;
 
-        /* 오른쪽 키보드(Peripheral)의 주소(0x74)와 맞춰줍니다 */
+        /* 실제 장치는 여기(자식 노드)입니다 */
         tps43_split: tps43_split@74 {
             compatible = "zmk,input-split";
             reg = <0x74>;
         };
     };
 
-    /* 수신된 데이터를 마우스 커서 움직임으로 변환하는 리스너 정의 */
+    /* 리스너 설정 */
     tps43_listener: tps43_listener {
         compatible = "zmk,input-listener";
         device = <&tps43_split>;
         
-        /* XY축 방향 보정 (Corne 표준 방향에 맞춤) */
         input-processors = <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)>, 
                            <&zip_scroll_transform (INPUT_TRANSFORM_XY_SWAP)>;
     };
