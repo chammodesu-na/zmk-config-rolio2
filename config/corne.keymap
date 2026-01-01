@@ -74,12 +74,43 @@
             flavor = "tap-preferred";
         };
 
-        sniper_mmv: behavior_sniper_mmv {
-            compatible = "zmk,behavior-sniper-mmv";
-            #binding-cells = <2>;
-        
+        mmv_up: mmv_up {
+            compatible = "zmk,behavior-sniper-auto";
+            #binding-cells = <0>;
             slow-layer = <5>;
             fast-layer = <6>;
+            x-val = <0>;
+            y-val = <(-1500)>;
+            delay-ms = <10>;
+        };
+        
+        mmv_down: mmv_down {
+            compatible = "zmk,behavior-sniper-auto";
+            #binding-cells = <0>;
+            slow-layer = <5>;
+            fast-layer = <6>;
+            x-val = <0>;
+            y-val = <1500>;
+            delay-ms = <10>;
+        };
+
+        mmv_left: mmv_left {
+            compatible = "zmk,behavior-sniper-auto";
+            #binding-cells = <0>;
+            slow-layer = <5>;
+            fast-layer = <6>;
+            x-val = <(-1500)>;
+            y-val = <0>;
+            delay-ms = <10>;
+        };
+
+        mmv_right: mmv_right {
+            compatible = "zmk,behavior-sniper-auto";
+            #binding-cells = <0>;
+            slow-layer = <5>;
+            fast-layer = <6>;
+            x-val = <1500>;
+            y-val = <0>;
             delay-ms = <10>;
         };
     };
