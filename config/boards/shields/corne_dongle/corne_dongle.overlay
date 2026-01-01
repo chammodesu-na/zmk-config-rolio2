@@ -46,27 +46,6 @@
         };
     };
 
-    /* 2. 가상 마우스 장치 3개 생성 (핵심!) */
-    
-    /* 보통 쥐 (기본 레이어용) */
-    uinput_def: uinput_def {
-        compatible = "zmk,input-behavior-device";
-        label = "UINPUT_DEF";
-        #binding-cells = <1>;
-    };
-    /* 느린 쥐 (스나이퍼용) */
-    uinput_slow: uinput_slow {
-        compatible = "zmk,input-behavior-device";
-        label = "UINPUT_SLOW";
-        #binding-cells = <1>;
-    };
-    /* 빠른 쥐 (고속 이동용) */
-    uinput_fast: uinput_fast {
-        compatible = "zmk,input-behavior-device";
-        label = "UINPUT_FAST";
-        #binding-cells = <1>;
-    };
-
 
     /* === 리스너 설정 (속도 조절 담당) === */
 
@@ -106,3 +85,4 @@
         input-processors = <&zip_xy_scaler 2 1>; /* 2배 속도 */
     };
 };
+
