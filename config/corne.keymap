@@ -16,6 +16,26 @@
 #define HOTKEY  3
 
 / {
+
+
+    uinput_def: uinput_def {
+        compatible = "zmk,input-behavior-device";
+        label = "UINPUT_DEF";
+        #binding-cells = <1>;
+    };
+
+    uinput_slow: uinput_slow {
+        compatible = "zmk,input-behavior-device";
+        label = "UINPUT_SLOW";
+        #binding-cells = <1>;
+    };
+
+    uinput_fast: uinput_fast {
+        compatible = "zmk,input-behavior-device";
+        label = "UINPUT_FAST";
+        #binding-cells = <1>;
+    };
+
     behaviors {
         Tab_or_Esc: Tab_or_Esc {
             compatible = "zmk,behavior-hold-tap";
