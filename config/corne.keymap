@@ -73,7 +73,6 @@
             tapping-term-ms = <250>;
             flavor = "tap-preferred";
         };
-
     };
 
     macros {
@@ -89,6 +88,22 @@
             #binding-cells = <0>;
             bindings = <&none &kp MINUS &kp SPACE &kp LBKT &kp SPACE &kp RBKT &kp SPACE>;
             label = "OB_TASK";
+        };
+
+        iphone_lock: iphone_lock {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp C_AL_LOCK &out OUT_TOG>;
+            label = "IPHONE_LOCK";
+        };
+    };
+
+    combos {
+        compatible = "zmk,combos";
+
+        iphone_lock {
+            bindings = <&iphone_lock>;
+            key-positions = <19 20 21>;
         };
     };
 
@@ -108,9 +123,9 @@
         MouseAndArrow {
             label = "MOUSE_ARROW";
             bindings = <
-&kp LA(LC(TAB))  &kp LS(LC(F24))  &msc SCRL_LEFT  &mmv_up                 &msc SCRL_RIGHT  &mkp MB4         &mkp MB2       &kp PAGE_UP    &kp UP            &kp BACKSPACE  &kp LS(LA(LC(F22)))  &kp LS(LG(GRAVE))
-&kp LCTRL        &kp DELETE       &mmv_left       &mmv_down               &mmv_right       &kp PRCNT        &mkp MB1       &kp LEFT       &kp DOWN          &kp RIGHT      &kp ENTER            &kp LG(B)
-&kp LEFT_SHIFT   &kp LG(DOT)      &msc SCRL_UP    &kp LS(LA(LC(PERIOD)))  &msc SCRL_DOWN   &kp LC(LA(V))    &kp LS(GRAVE)  &kp PAGE_DOWN  &kp LS(NUMBER_1)  &mo 5          &mo 6                &kp RCTRL
+&kp LA(LC(TAB))  &kp LS(LC(F24))  &msc SCRL_LEFT  &mmv MOVE_UP            &msc SCRL_RIGHT  &mkp MB4         &mkp MB2       &kp PAGE_UP    &kp UP            &kp BACKSPACE  &kp LS(LA(LC(F22)))  &kp LS(LG(GRAVE))
+&kp LCTRL        &kp DELETE       &mmv MOVE_LEFT  &mmv MOVE_DOWN          &mmv MOVE_RIGHT  &kp PRCNT        &mkp MB1       &kp LEFT       &kp DOWN          &kp RIGHT      &kp ENTER            &kp LG(B)
+&kp LEFT_SHIFT   &kp LG(DOT)      &msc SCRL_UP    &kp LS(LA(LC(PERIOD)))  &msc SCRL_DOWN   &kp LC(LA(V))    &kp LS(GRAVE)  &kp PAGE_DOWN  &kp LS(NUMBER_1)  &mo 6          &mo 7                &kp RCTRL
                                                   &trans                  &trans           &kp LALT         &kp LA(ENTER)  &trans         &mo 3
             >;
         };
@@ -130,7 +145,7 @@
             bindings = <
 &kp LS(TAB)   &kp F1  &kp F2   &kp F3  &kp F4                  &kp F5               &kp F6        &kp F7        &kp F8        &kp F9         &kp F10   &kp F11
 &out OUT_TOG  &trans  &kp F12  &trans  &kp LG(LC(LEFT_ARROW))  &kp LC(LG(RIGHT))    &kp LS(LBRC)  &kp LS(LPAR)  &kp LS(RPAR)  &kp LS(COLON)  &kp BSLH  &trans
-&bt BT_SEL 0  &trans  &trans   &trans  &ob_task                &kp F23              &kp LS(RBRC)  &kp LBKT      &kp RBKT      &kp N3         &trans    &trans
+&bt BT_SEL 0  &trans  &to 5    &trans  &ob_task                &kp F23              &kp LS(RBRC)  &kp LBKT      &kp RBKT      &kp N3         &trans    &trans
                                &trans  &trans                  &kp SPACE            &trans        &trans        &trans
             >;
         };
@@ -144,12 +159,22 @@
             >;
         };
 
+        layer_7 {
+            label = "ma";
+            bindings = <
+&Tab_or_Esc ESC TAB  &kp Q                &kp W  &kp E         &kp R             &kp T          &kp Y       &kp U  &kp I      &kp O    &kp P                            &mt LC(BSPC) BSPC
+&lang_Ctrl_Caps      &ctrlA_or_A LC(A) A  &kp S  &kp D         &Alt_or_F LALT F  &kp G          &kp H       &kp J  &kp K      &kp L    &Basic_hold_tap LCTRL SEMICOLON  &kp SQT
+&kp LSHIFT           &kp Z                &kp X  &kp C         &kp V             &kp B          &kp N       &kp M  &kp COMMA  &kp DOT  &kp FSLH                         &kp RSHFT
+                                                 &kp LEFT_GUI  &mo 1             &lt 2 SPACE    &kp RSHIFT  &mo 1  &mo 2
+            >;
+        };
+
         SlowMouse {
             label = "SlowMouse";
             bindings = <
 &kp LA(LC(TAB))  &kp LS(LC(F24))  &msc SCRL_LEFT  &trans                  &msc SCRL_RIGHT  &mkp MB4         &mkp MB2       &kp PAGE_UP    &kp UP            &kp BACKSPACE  &kp LS(LA(LC(F22)))  &kp LS(LG(GRAVE))
 &kp LCTRL        &kp DELETE       &trans          &trans                  &trans           &kp PRCNT        &mkp MB1       &kp LEFT       &kp DOWN          &kp RIGHT      &kp ENTER            &kp LG(B)
-&kp LEFT_SHIFT   &kp LG(DOT)      &msc SCRL_UP    &kp LS(LA(LC(PERIOD)))  &msc SCRL_DOWN   &kp LC(LA(V))    &kp LS(GRAVE)  &kp PAGE_DOWN  &kp LS(NUMBER_1)  &mo 5          &mo 6                &kp RCTRL
+&kp LEFT_SHIFT   &kp LG(DOT)      &msc SCRL_UP    &kp LS(LA(LC(PERIOD)))  &msc SCRL_DOWN   &kp LC(LA(V))    &kp LS(GRAVE)  &kp PAGE_DOWN  &kp LS(NUMBER_1)  &mo 6          &mo 7                &kp RCTRL
                                                   &trans                  &trans           &kp LALT         &kp LA(ENTER)  &trans         &mo 3
             >;
         };
@@ -159,7 +184,7 @@
             bindings = <
 &kp LA(LC(TAB))  &kp LS(LC(F24))  &msc SCRL_LEFT  &trans                  &msc SCRL_RIGHT  &mkp MB4         &mkp MB2       &kp PAGE_UP    &kp UP            &kp BACKSPACE  &kp LS(LA(LC(F22)))  &kp LS(LG(GRAVE))
 &kp LCTRL        &kp DELETE       &trans          &trans                  &trans           &kp PRCNT        &mkp MB1       &kp LEFT       &kp DOWN          &kp RIGHT      &kp ENTER            &kp LG(B)
-&kp LEFT_SHIFT   &kp LG(DOT)      &msc SCRL_UP    &kp LS(LA(LC(PERIOD)))  &msc SCRL_DOWN   &kp LC(LA(V))    &kp LS(GRAVE)  &kp PAGE_DOWN  &kp LS(NUMBER_1)  &mo 5          &mo 6                &kp RCTRL
+&kp LEFT_SHIFT   &kp LG(DOT)      &msc SCRL_UP    &kp LS(LA(LC(PERIOD)))  &msc SCRL_DOWN   &kp LC(LA(V))    &kp LS(GRAVE)  &kp PAGE_DOWN  &kp LS(NUMBER_1)  &mo 6          &mo 7                &kp RCTRL
                                                   &trans                  &trans           &kp LALT         &kp LA(ENTER)  &trans         &mo 3
             >;
         };
