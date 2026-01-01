@@ -76,7 +76,7 @@
 
         sniper_mmv: behavior_sniper_mmv {
             compatible = "zmk,behavior-sniper-mmv";
-            #binding-cells = <1>;
+            #binding-cells = <2>;
         
             slow-layer = <5>;
             fast-layer = <6>;
