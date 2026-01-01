@@ -73,6 +73,17 @@
             tapping-term-ms = <250>;
             flavor = "tap-preferred";
         };
+
+        mmv: behavior_sniper_mmv {
+            compatible = "zmk,behavior-sniper-mmv";
+            #binding-cells = <1>;
+            x-input-code = <INPUT_REL_X>;
+            y-input-code = <INPUT_REL_Y>;
+            slow-layer = <5>;
+            fast-layer = <6>;
+            delay-ms = <10>;
+        };
+
     };
 
     macros {
