@@ -1,4 +1,7 @@
-/* behavior_sniper_mmv.c - 표준 규격(2-axis) 호환 버전 */
+/*
+ * Copyright (c) 2024 The ZMK Contributors
+ * SPDX-License-Identifier: MIT
+ */
 
 #define DT_DRV_COMPAT zmk_behavior_sniper_mmv
 
@@ -20,8 +23,8 @@ struct behavior_sniper_mmv_config {
 
 struct behavior_sniper_mmv_data {
     struct k_timer timer;
-    int x_mv;
-    int y_mv;
+    uint16_t axis; // 변경됨: 표준 규격대로 축 저장
+    int val;       // 변경됨: 표준 규격대로 값 저장
     bool active;
 };
 
@@ -29,25 +32,19 @@ static void send_mouse_report(const struct device *dev) {
     const struct behavior_sniper_mmv_config *cfg = dev->config;
     struct behavior_sniper_mmv_data *data = dev->data;
     
-    // 1. 레이어 감지 및 속도 조절
-    int scale_percent = 100;
+    // 1. 레이어 확인 (스나이퍼 로직)
+    int scale = 100;
+    if (zmk_keymap_layer_active(cfg->slow_layer)) scale = 25; // 25%
+    else if (zmk_keymap_layer_active(cfg->fast_layer)) scale = 200; // 200%
 
-    if (zmk_keymap_layer_active(cfg->slow_layer)) {
-        scale_percent = 25; // 25% (1/4 속도)
-    } else if (zmk_keymap_layer_active(cfg->fast_layer)) {
-        scale_percent = 200; // 200% (2배 속도)
-    }
+    // 2. 값 계산
+    int final_val = (data->val * scale) / 100;
 
-    // 2. 값 계산 (입력값 * 배율 / 100)
-    int x = (data->x_mv * scale_percent) / 100;
-    int y = (data->y_mv * scale_percent) / 100;
+    // 0이 되지 않게 보정
+    if (data->val != 0 && final_val == 0) final_val = (data->val > 0) ? 1 : -1;
 
-    // 너무 느려서 0이 되는 것 방지 (최소 1 유지)
-    if (data->x_mv != 0 && x == 0) x = (data->x_mv > 0) ? 1 : -1;
-    if (data->y_mv != 0 && y == 0) y = (data->y_mv > 0) ? 1 : -1;
-
-    zmk_hid_mouse_movement_set(0, (int16_t)x);
-    zmk_hid_mouse_movement_set(1, (int16_t)y);
+    // 3. 전송 (축 정보 그대로 사용)
+    zmk_hid_mouse_movement_set(data->axis, (int16_t)final_val);
     zmk_endpoints_send_mouse_report();
 }
 
@@ -63,15 +60,9 @@ static int on_keymap_binding_pressed(struct zmk_behavior_binding *binding,
     struct behavior_sniper_mmv_data *data = dev->data;
     const struct behavior_sniper_mmv_config *cfg = dev->config;
 
-    // 🔥 핵심: 표준 MOVE_UP 매크로는 값 2개를 보냅니다.
-    // param1: 축 (0=X, 1=Y)
-    // param2: 값 (이동량)
-    
-    if (binding->param1 == 0) { // X축
-        data->x_mv = binding->param2;
-    } else if (binding->param1 == 1) { // Y축
-        data->y_mv = binding->param2;
-    }
+    // 🔥 표준 규격 수용 (MOVE_UP 등은 값 2개를 줍니다)
+    data->axis = binding->param1; // 첫 번째 값: 축 (X=0, Y=1)
+    data->val  = binding->param2; // 두 번째 값: 이동량 (예: 1500)
 
     if (!data->active) {
         data->active = true;
@@ -86,14 +77,10 @@ static int on_keymap_binding_released(struct zmk_behavior_binding *binding,
     const struct device *dev = zmk_behavior_get_binding(binding->behavior_dev);
     struct behavior_sniper_mmv_data *data = dev->data;
 
-    // 손 떼면 해당 축 멈춤
-    if (binding->param1 == 0) data->x_mv = 0;
-    else if (binding->param1 == 1) data->y_mv = 0;
-
-    if (data->x_mv == 0 && data->y_mv == 0) {
-        data->active = false;
-        k_timer_stop(&data->timer);
-    }
+    // 멈춤
+    data->active = false;
+    k_timer_stop(&data->timer);
+    
     return ZMK_BEHAVIOR_OPAQUE;
 }
 
