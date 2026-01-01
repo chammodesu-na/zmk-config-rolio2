@@ -147,9 +147,9 @@
         default_layer {
             label = "DEFAULT";
             bindings = <
-&Tab_or_Esc ESC TAB  &kp Q                &kp W  &kp E         &kp R             &kp T          &kp Y       &kp U  &kp I      &kp O    &kp P     &mt LC(BSPC) BSPC
-&lang_Ctrl_Caps      &ctrlA_or_A LC(A) A  &kp S  &kp D         &Alt_or_F LALT F  &kp G          &kp H       &kp J  &kp K      &kp L    &kp SEMI  &kp SQT
-&kp LSHIFT           &kp Z                &kp X  &kp C         &kp V             &kp B          &kp N       &kp M  &kp COMMA  &kp DOT  &kp FSLH  &kp RSHFT
+&Tab_or_Esc ESC TAB  &kp Q                &kp W  &kp E         &kp R             &kp T          &kp Y       &kp U  &kp I      &kp O    &kp P                            &mt LC(BSPC) BSPC
+&lang_Ctrl_Caps      &ctrlA_or_A LC(A) A  &kp S  &kp D         &Alt_or_F LALT F  &kp G          &kp H       &kp J  &kp K      &kp L    &Basic_hold_tap LCTRL SEMICOLON  &kp SQT
+&kp LSHIFT           &kp Z                &kp X  &kp C         &kp V             &kp B          &kp N       &kp M  &kp COMMA  &kp DOT  &kp FSLH                         &kp RSHFT
                                                  &kp LEFT_GUI  &mo 1             &lt 2 SPACE    &kp RSHIFT  &mo 1  &mo 2
             >;
         };
