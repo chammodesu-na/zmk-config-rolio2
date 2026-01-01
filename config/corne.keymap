@@ -82,7 +82,6 @@
             y-input-code = <INPUT_REL_Y>;
         };
 
-
         mmv_slow: mmv_slow_behavior {
             compatible = "zmk,behavior-input-two-axis";
             #binding-cells = <1>;
@@ -91,7 +90,6 @@
             y-input-code = <INPUT_REL_Y>;
         };
 
-
         mmv_fast: mmv_fast_behavior {
             compatible = "zmk,behavior-input-two-axis";
             #binding-cells = <1>;
@@ -99,10 +97,8 @@
             x-input-code = <INPUT_REL_X>;
             y-input-code = <INPUT_REL_Y>;
         };
-
-
     };
-    
+
     macros {
         teamcode: teamcode {
             compatible = "zmk,behavior-macro";
@@ -122,7 +118,7 @@
     keymap {
         compatible = "zmk,keymap";
 
-        default_layer {
+        Default {
             label = "DEFAULT";
             bindings = <
 &Tab_or_Esc ESC TAB  &kp Q                &kp W  &kp E         &kp R             &kp T          &kp Y       &kp U  &kp I      &kp O    &kp P                            &mt LC(BSPC) BSPC
@@ -132,17 +128,17 @@
             >;
         };
 
-        number_layer {
+        MouseAndArrow {
             label = "MOUSE_ARROW";
             bindings = <
 &kp LA(LC(TAB))  &kp LS(LC(F24))  &msc SCRL_LEFT  &mmv MOVE_UP            &msc SCRL_RIGHT  &mkp MB4         &mkp MB2       &kp PAGE_UP    &kp UP            &kp BACKSPACE  &kp LS(LA(LC(F22)))  &kp LS(LG(GRAVE))
-&trans           &kp EXCL         &mmv MOVE_LEFT  &mmv MOVE_DOWN          &mmv MOVE_RIGHT  &kp PRCNT        &mkp MB1       &kp LEFT       &kp DOWN          &kp RIGHT      &kp ENTER            &kp LG(B)
-&trans           &kp LG(DOT)      &msc SCRL_UP    &kp LS(LA(LC(PERIOD)))  &msc SCRL_DOWN   &kp LC(LA(V))    &kp LS(GRAVE)  &kp PAGE_DOWN  &kp LS(NUMBER_1)  &mo 5          &mo 6                &kp RCTRL
+&kp LCTRL        &kp DELETE       &mmv MOVE_LEFT  &mmv MOVE_DOWN          &mmv MOVE_RIGHT  &kp PRCNT        &mkp MB1       &kp LEFT       &kp DOWN          &kp RIGHT      &kp ENTER            &kp LG(B)
+&kp LEFT_SHIFT   &kp LG(DOT)      &msc SCRL_UP    &kp LS(LA(LC(PERIOD)))  &msc SCRL_DOWN   &kp LC(LA(V))    &kp LS(GRAVE)  &kp PAGE_DOWN  &kp LS(NUMBER_1)  &mo 5          &mo 6                &kp RCTRL
                                                   &trans                  &trans           &kp LALT         &kp LA(ENTER)  &trans         &mo 3
             >;
         };
 
-        fn_layer {
+        Number {
             label = "NUMBER";
             bindings = <
 &kp ESC     &kp N1      &kp N2     &kp N3        &kp N4                &kp N5                   &kp N6         &kp N7  &kp N8        &kp N9        &kp N0     &kp BACKSPACE
@@ -152,7 +148,7 @@
             >;
         };
 
-        hotkey_layer {
+        FnKey {
             label = "FNKEY";
             bindings = <
 &kp LS(TAB)   &kp F1  &kp F2   &kp F3  &kp F4                  &kp F5               &kp F6        &kp F7        &kp F8        &kp F9         &kp F10   &kp F11
@@ -162,32 +158,32 @@
             >;
         };
 
-        layer_4 {
+        trackpad {
             bindings = <
-&kp TAB    &trans   &trans    &trans    &trans     &trans       &trans  &trans  &trans  &trans  &trans  &trans
-&kp LCTRL  &kp DEL  &mkp MB1  &mkp MB2  &mkp MB3   &mkp LCLK    &trans  &trans  &trans  &trans  &trans  &trans
-&kp LSHFT  &trans   &trans    &trans    &trans     &trans       &trans  &trans  &trans  &trans  &trans  &trans
-                              &kp LGUI  &kp LCTRL  &kp LSHFT    &trans  &trans  &trans
+&kp TAB    &trans   &msc SCRL_LEFT  &trans    &msc SCRL_RIGHT  &mkp MB4     &trans  &trans  &trans  &trans  &trans  &trans
+&kp LCTRL  &kp DEL  &mkp MB3        &mkp MB2  &mkp MB1         &kp ENTER    &trans  &trans  &trans  &trans  &trans  &trans
+&kp LSHFT  &kp F24  &msc SCRL_UP    &trans    &msc SCRL_DOWN   &trans       &trans  &trans  &trans  &trans  &trans  &trans
+                                    &kp LGUI  &kp LCTRL        &kp LSHFT    &trans  &trans  &trans
             >;
         };
 
         SLOWMOUSE {
             label = "SLOWMOUSE";
             bindings = <
-&kp LA(LC(TAB))  &kp LS(LC(F24))  &msc SCRL_LEFT  &mmv MOVE_UP            &msc SCRL_RIGHT  &mkp MB4         &mkp MB2       &kp PAGE_UP    &kp UP            &kp BACKSPACE  &kp LS(LA(LC(F22)))  &kp LS(LG(GRAVE))
-&trans           &kp EXCL         &mmv MOVE_LEFT  &mmv MOVE_DOWN          &mmv MOVE_RIGHT  &kp PRCNT        &mkp MB1       &kp LEFT       &kp DOWN          &kp RIGHT      &kp ENTER            &kp LG(B)
-&trans           &kp LG(DOT)      &msc SCRL_UP    &kp LS(LA(LC(PERIOD)))  &msc SCRL_DOWN   &kp LC(LA(V))    &kp LS(GRAVE)  &kp PAGE_DOWN  &kp LS(NUMBER_1)  &kp RBKT       &kp BSLH             &kp RCTRL
-                                                  &trans                  &trans           &kp LALT         &kp LA(ENTER)  &trans         &mo 3
+&kp LA(LC(TAB))  &kp LS(LC(F24))  &msc SCRL_LEFT       &mmv_slow MOVE_UP       &msc SCRL_RIGHT       &mkp MB4         &mkp MB2       &kp PAGE_UP    &kp UP            &kp BACKSPACE  &kp LS(LA(LC(F22)))  &kp LS(LG(GRAVE))
+&kp LCTRL        &kp DEL          &mmv_slow MOVE_LEFT  &mmv_slow MOVE_DOWN     &mmv_slow MOVE_RIGHT  &kp PRCNT        &mkp MB1       &kp LEFT       &kp DOWN          &kp RIGHT      &kp ENTER            &kp LG(B)
+&kp LSHFT        &kp LG(DOT)      &msc SCRL_UP         &kp LS(LA(LC(PERIOD)))  &msc SCRL_DOWN        &kp LC(LA(V))    &kp LS(GRAVE)  &kp PAGE_DOWN  &kp LS(NUMBER_1)  &trans         &mo 6                &kp RCTRL
+                                                       &kp LGUI                &trans                &kp LALT         &kp LA(ENTER)  &trans         &mo 3
             >;
         };
 
         FASTMOUSE {
             label = "FASTMOUSE";
             bindings = <
-&kp LA(LC(TAB))  &kp LS(LC(F24))  &msc SCRL_LEFT  &mmv MOVE_UP            &msc SCRL_RIGHT  &mkp MB4         &mkp MB2       &kp PAGE_UP    &kp UP            &kp BACKSPACE  &kp LS(LA(LC(F22)))  &kp LS(LG(GRAVE))
-&trans           &kp EXCL         &mmv MOVE_LEFT  &mmv MOVE_DOWN          &mmv MOVE_RIGHT  &kp PRCNT        &mkp MB1       &kp LEFT       &kp DOWN          &kp RIGHT      &kp ENTER            &kp LG(B)
-&trans           &kp LG(DOT)      &msc SCRL_UP    &kp LS(LA(LC(PERIOD)))  &msc SCRL_DOWN   &kp LC(LA(V))    &kp LS(GRAVE)  &kp PAGE_DOWN  &kp LS(NUMBER_1)  &kp RBKT       &kp BSLH             &kp RCTRL
-                                                  &trans                  &trans           &kp LALT         &kp LA(ENTER)  &trans         &mo 3
+&kp LA(LC(TAB))  &kp LS(LC(F24))  &msc SCRL_LEFT       &mmv_fast MOVE_UP       &msc SCRL_RIGHT       &mkp MB4         &mkp MB2       &kp PAGE_UP    &kp UP            &kp BACKSPACE  &kp LS(LA(LC(F22)))  &kp LS(LG(GRAVE))
+&kp LCTRL        &kp DEL          &mmv_fast MOVE_LEFT  &mmv_fast MOVE_DOWN     &mmv_fast MOVE_RIGHT  &kp PRCNT        &mkp MB1       &kp LEFT       &kp DOWN          &kp RIGHT      &kp ENTER            &kp LG(B)
+&kp LSHFT        &kp LG(DOT)      &msc SCRL_UP         &kp LS(LA(LC(PERIOD)))  &msc SCRL_DOWN        &kp LC(LA(V))    &kp LS(GRAVE)  &kp PAGE_DOWN  &kp LS(NUMBER_1)  &mo 5          &trans               &kp RCTRL
+                                                       &kp LEFT_GUI            &trans                &kp LALT         &kp LA(ENTER)  &trans         &mo 3
             >;
         };
     };
