@@ -73,7 +73,7 @@
             tapping-term-ms = <250>;
             flavor = "tap-preferred";
         };
-
+    };
     macros {
         teamcode: teamcode {
             compatible = "zmk,behavior-macro";
