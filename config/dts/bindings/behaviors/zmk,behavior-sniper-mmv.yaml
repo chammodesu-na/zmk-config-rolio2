@@ -1,0 +1,25 @@
+description: Sniper Mouse Move Behavior
+compatible: "zmk,behavior-sniper-mmv"
+include: behavior-device.yaml
+properties:
+  x-input-code:
+    type: int
+    required: true
+    description: Input code for X axis (usually INPUT_REL_X)
+  y-input-code:
+    type: int
+    required: true
+    description: Input code for Y axis (usually INPUT_REL_Y)
+  slow-layer:
+    type: int
+    required: true
+    description: Layer number for Slow Mode
+  fast-layer:
+    type: int
+    required: true
+    description: Layer number for Fast Mode
+  delay-ms:
+    type: int
+    required: false
+    default: 12
+    description: Polling interval in ms (lower is smoother but higher CPU usage)
