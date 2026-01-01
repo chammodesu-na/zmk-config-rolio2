@@ -61,3 +61,4 @@
                            <&zip_temp_layer 4 1000>,
                            <&zip_xy_scaler 3 2>; 
     };
+};
