@@ -93,7 +93,7 @@
         iphone_lock: iphone_lock {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp C_AL_LOCK &out OUT_TOG>;
+            bindings = <&kp F15 &out OUT_TOG>;
             label = "IPHONE_LOCK";
         };
     };
