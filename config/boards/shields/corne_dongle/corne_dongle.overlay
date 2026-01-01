@@ -1,5 +1,5 @@
 /*
- * Corne Dongle Overlay (Sniper Mode + Trackpad + MouseKeys)
+ * Corne Dongle Overlay (Multiple Virtual Mice Strategy)
  */
 
 #include <dt-bindings/zmk/matrix_transform.h>
@@ -36,7 +36,7 @@
         >;
     };
 
-    /* 1. 트랙패드 데이터 수신부 */
+    /* 1. 트랙패드 하드웨어 연결 */
     split_inputs {
         #address-cells = <1>;
         #size-cells = <0>;
@@ -46,72 +46,63 @@
         };
     };
 
-    /* 2. [핵심] 마우스 키(Key)용 가상 입력 장치 */
-    uinput: uinput {
+    /* 2. 가상 마우스 장치 3개 생성 (핵심!) */
+    
+    /* 보통 쥐 (기본 레이어용) */
+    uinput_def: uinput_def {
         compatible = "zmk,input-behavior-device";
-        label = "UINPUT";
+        label = "UINPUT_DEF";
+        #binding-cells = <1>;
+    };
+    /* 느린 쥐 (스나이퍼용) */
+    uinput_slow: uinput_slow {
+        compatible = "zmk,input-behavior-device";
+        label = "UINPUT_SLOW";
+        #binding-cells = <1>;
+    };
+    /* 빠른 쥐 (고속 이동용) */
+    uinput_fast: uinput_fast {
+        compatible = "zmk,input-behavior-device";
+        label = "UINPUT_FAST";
         #binding-cells = <1>;
     };
 
-    /* === 리스너(속도 조절기) 설정 === */
-    
-    /* A. 트랙패드 설정 (기본/느림/빠름) */
-    
-    /* A-1. 트랙패드 기본 (Layer 0~4) */
-    tp_listener_def {
+
+    /* === 리스너 설정 (속도 조절 담당) === */
+
+    /* A. 트랙패드 (단일 속도 고정 - 에러 방지) */
+    tp_listener {
         compatible = "zmk,input-listener";
         device = <&tps43_split>;
-        layers = <0 1 2 3 4>;
+        
+        /* 트랙패드는 하나뿐이라 레이어 구분을 못하므로, 가장 편한 속도 하나로 고정합니다 */
+        /* <3 2>는 1.5배 속도입니다. */
         input-processors = <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)>, 
                            <&zip_scroll_transform (INPUT_TRANSFORM_XY_SWAP)>,
                            <&zip_temp_layer 4 1000>,
-                           <&zip_xy_scaler 3 2>; /* 기본 속도 1.5배 (취향껏 조절: 1 1은 원본) */
+                           <&zip_xy_scaler 3 2>; 
     };
 
-    /* A-2. 트랙패드 스나이퍼 모드 (Layer 5) */
-    tp_listener_slow {
+    /* B. 마우스 키 리스너 3형제 */
+
+    /* B-1. 보통 속도 리스너 (보통 쥐에 연결) */
+    listener_def {
         compatible = "zmk,input-listener";
-        device = <&tps43_split>;
-        layers = <5>;
-        input-processors = <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)>, 
-                           <&zip_scroll_transform (INPUT_TRANSFORM_XY_SWAP)>,
-                           <&zip_xy_scaler 1 3>; /* 🔥 속도 1/3로 떡락 (정밀) */
+        device = <&uinput_def>;
+        input-processors = <&zip_xy_scaler 1 1>; /* 1:1 정속 */
     };
 
-    /* A-3. 트랙패드 고속 모드 (Layer 6) */
-    tp_listener_fast {
+    /* B-2. 느린 속도 리스너 (느린 쥐에 연결) */
+    listener_slow {
         compatible = "zmk,input-listener";
-        device = <&tps43_split>;
-        layers = <6>;
-        input-processors = <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)>, 
-                           <&zip_scroll_transform (INPUT_TRANSFORM_XY_SWAP)>,
-                           <&zip_xy_scaler 3 1>; /* 🔥 속도 3배 (미친 속도) */
+        device = <&uinput_slow>;
+        input-processors = <&zip_xy_scaler 1 4>; /* 1/4 속도 (매우 정밀) */
     };
 
-
-    /* B. 마우스 키 설정 (키보드로 움직일 때) */
-
-    /* B-1. 마우스키 기본 (Layer 0~4) */
-    ukey_listener_def {
+    /* B-3. 빠른 속도 리스너 (빠른 쥐에 연결) */
+    listener_fast {
         compatible = "zmk,input-listener";
-        device = <&uinput>;
-        layers = <0 1 2 3 4>;
-        input-processors = <&zip_xy_scaler 1 1>; /* 기본 1:1 */
-    };
-
-    /* B-2. 마우스키 스나이퍼 모드 (Layer 5) */
-    ukey_listener_slow {
-        compatible = "zmk,input-listener";
-        device = <&uinput>;
-        layers = <5>;
-        input-processors = <&zip_xy_scaler 1 4>; /* 🔥 속도 1/4 (아주 느림) */
-    };
-
-    /* B-3. 마우스키 고속 모드 (Layer 6) */
-    ukey_listener_fast {
-        compatible = "zmk,input-listener";
-        device = <&uinput>;
-        layers = <6>;
-        input-processors = <&zip_xy_scaler 2 1>; /* 🔥 속도 2배 */
+        device = <&uinput_fast>;
+        input-processors = <&zip_xy_scaler 2 1>; /* 2배 속도 */
     };
 };
