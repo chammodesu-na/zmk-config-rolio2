@@ -73,7 +73,36 @@
             tapping-term-ms = <250>;
             flavor = "tap-preferred";
         };
+
+        mmv_def: mmv_def_behavior {
+            compatible = "zmk,behavior-input-two-axis";
+            #binding-cells = <1>;
+            device = <&uinput_def>;
+            x-input-code = <INPUT_REL_X>;
+            y-input-code = <INPUT_REL_Y>;
+        };
+
+
+        mmv_slow: mmv_slow_behavior {
+            compatible = "zmk,behavior-input-two-axis";
+            #binding-cells = <1>;
+            device = <&uinput_slow>;
+            x-input-code = <INPUT_REL_X>;
+            y-input-code = <INPUT_REL_Y>;
+        };
+
+
+        mmv_fast: mmv_fast_behavior {
+            compatible = "zmk,behavior-input-two-axis";
+            #binding-cells = <1>;
+            device = <&uinput_fast>;
+            x-input-code = <INPUT_REL_X>;
+            y-input-code = <INPUT_REL_Y>;
+        };
+
+
     };
+    
     macros {
         teamcode: teamcode {
             compatible = "zmk,behavior-macro";
