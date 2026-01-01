@@ -1,0 +1,22 @@
+description: Sniper Auto Mouse
+compatible: "zmk,behavior-sniper-auto"
+
+properties:
+  slow-layer:
+    type: int
+    required: true
+  fast-layer:
+    type: int
+    required: true
+  x-val:
+    type: int
+    required: true
+    description: Fixed X movement value
+  y-val:
+    type: int
+    required: true
+    description: Fixed Y movement value
+  delay-ms:
+    type: int
+    required: false
+    default: 10
