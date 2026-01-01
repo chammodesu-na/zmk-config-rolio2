@@ -16,26 +16,6 @@
 #define HOTKEY  3
 
 / {
-
-
-    uinput_def: uinput_def {
-        compatible = "zmk,input-behavior-device";
-        label = "UINPUT_DEF";
-        #binding-cells = <1>;
-    };
-
-    uinput_slow: uinput_slow {
-        compatible = "zmk,input-behavior-device";
-        label = "UINPUT_SLOW";
-        #binding-cells = <1>;
-    };
-
-    uinput_fast: uinput_fast {
-        compatible = "zmk,input-behavior-device";
-        label = "UINPUT_FAST";
-        #binding-cells = <1>;
-    };
-
     behaviors {
         Tab_or_Esc: Tab_or_Esc {
             compatible = "zmk,behavior-hold-tap";
@@ -92,36 +72,6 @@
             #binding-cells = <2>;
             tapping-term-ms = <250>;
             flavor = "tap-preferred";
-        };
-
-        mmv_def: mmv_def_behavior {
-            compatible = "zmk,behavior-input-two-axis";
-            #binding-cells = <1>;
-            device = <&uinput_def>;
-            x-input-code = <INPUT_REL_X>;
-            y-input-code = <INPUT_REL_Y>;
-            time-to-max-speed-ms = <0>;
-            acceleration-exponent = <0>;
-        };
-
-        mmv_slow: mmv_slow_behavior {
-            compatible = "zmk,behavior-input-two-axis";
-            #binding-cells = <1>;
-            device = <&uinput_slow>;
-            x-input-code = <INPUT_REL_X>;
-            y-input-code = <INPUT_REL_Y>;
-            time-to-max-speed-ms = <0>;
-            acceleration-exponent = <0>;
-        };
-
-        mmv_fast: mmv_fast_behavior {
-            compatible = "zmk,behavior-input-two-axis";
-            #binding-cells = <1>;
-            device = <&uinput_fast>;
-            x-input-code = <INPUT_REL_X>;
-            y-input-code = <INPUT_REL_Y>;
-            time-to-max-speed-ms = <0>;
-            acceleration-exponent = <0>;
         };
     };
 
