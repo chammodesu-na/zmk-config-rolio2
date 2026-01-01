@@ -80,7 +80,6 @@
         
             slow-layer = <5>;
             fast-layer = <6>;
-            base_speed = <15>;
             delay-ms = <10>;
         };
     };
