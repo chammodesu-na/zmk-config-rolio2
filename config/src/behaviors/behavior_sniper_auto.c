@@ -1,5 +1,4 @@
-/* config/src/behaviors/behavior_sniper_auto.c */
-
+/* behavior_sniper_auto.c */
 #define DT_DRV_COMPAT zmk_behavior_sniper_auto
 
 #include <zephyr/device.h>
@@ -15,8 +14,8 @@ LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 struct behavior_sniper_auto_config {
     int slow_layer;
     int fast_layer;
-    int x_val;
-    int y_val;
+    int x_val;  /* 고정된 X 이동값 */
+    int y_val;  /* 고정된 Y 이동값 */
     int delay_ms;
 };
 
@@ -28,28 +27,26 @@ struct behavior_sniper_auto_data {
 static void send_mouse_report(const struct device *dev) {
     const struct behavior_sniper_auto_config *cfg = dev->config;
     
-    // 1. 레이어 확인
+    // 1. 레이어 확인 & 속도 조절 (기본 100%, 느림 25%, 빠름 200%)
     int scale = 100;
     if (zmk_keymap_layer_active(cfg->slow_layer)) scale = 25; 
     else if (zmk_keymap_layer_active(cfg->fast_layer)) scale = 200; 
 
-    // 2. 이동 계산
+    // 2. 미리 설정된 값(x_val, y_val)에 배율 적용
     int x = (cfg->x_val * scale) / 100;
     int y = (cfg->y_val * scale) / 100;
 
-    // 0 보정 (값이 있는데 0되면 최소 1로)
+    // 0이 안 되게 최소값 보정 (계산 결과가 0이면 최소 1이나 -1로 보정)
     if (cfg->x_val != 0 && x == 0) x = (cfg->x_val > 0) ? 1 : -1;
     if (cfg->y_val != 0 && y == 0) y = (cfg->y_val > 0) ? 1 : -1;
 
-    // 3. 전송
     zmk_hid_mouse_movement_set(0, (int16_t)x);
     zmk_hid_mouse_movement_set(1, (int16_t)y);
     zmk_endpoints_send_mouse_report();
 }
 
 static void timer_handler(struct k_timer *timer) {
-    // 🔥 [수정됨] 복잡한 핸들 변환 제거하고 직접 포인터 캐스팅
-    const struct device *dev = (const struct device *)timer->user_data;
+    const struct device *dev = device_from_handle(timer->user_data);
     send_mouse_report(dev);
 }
 
@@ -61,8 +58,7 @@ static int on_keymap_binding_pressed(struct zmk_behavior_binding *binding,
 
     if (!data->active) {
         data->active = true;
-        // 🔥 [수정됨] 타이머에 디바이스 주소를 직접 저장 (가장 확실함)
-        k_timer_user_data_set(&data->timer, (void *)dev);
+        k_timer_user_data_set(&data->timer, (void *)dev->handle);
         k_timer_start(&data->timer, K_NO_WAIT, K_MSEC(cfg->delay_ms));
     }
     return ZMK_BEHAVIOR_OPAQUE;
@@ -75,7 +71,6 @@ static int on_keymap_binding_released(struct zmk_behavior_binding *binding,
 
     data->active = false;
     k_timer_stop(&data->timer);
-    
     return ZMK_BEHAVIOR_OPAQUE;
 }
 
