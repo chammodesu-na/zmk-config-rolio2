@@ -58,8 +58,9 @@
         /* <3 2>는 1.5배 속도입니다. */
         input-processors = <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)>, 
                            <&zip_scroll_transform (INPUT_TRANSFORM_XY_SWAP)>,
-                           <&zip_temp_layer 4 0>,
+                           <&zip_temp_layer 4 1>,
                            <&zip_xy_scaler 3 2>; 
     };
 };
+
 
