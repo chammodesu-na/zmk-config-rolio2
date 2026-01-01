@@ -1,17 +1,19 @@
 description: Sniper Mouse Move Behavior
 compatible: "zmk,behavior-sniper-mmv"
+
 properties:
   slow-layer:
     type: int
     required: true
+    description: Layer number for Slow Mode
+  
   fast-layer:
     type: int
     required: true
-  base-speed:
-    type: int
-    required: true
-    description: Base speed of the mouse
+    description: Layer number for Fast Mode
+  
   delay-ms:
     type: int
     required: false
     default: 10
+    description: Polling interval in ms
