@@ -1,6 +1,5 @@
 description: Sniper Mouse Move Behavior
 compatible: "zmk,behavior-sniper-mmv"
-include: behavior-device.yaml
 properties:
   slow-layer:
     type: int
