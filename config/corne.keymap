@@ -46,21 +46,16 @@
             flavor = "tap-preferred";
         };
 
-        lang_Ctrl_Caps: lang_Ctrl_Caps {
-            compatible = "zmk,behavior-tap-dance";
-            label = "LANG_CTRL_CAPS";
-            #binding-cells = <0>;
-            bindings = <&Lang_or_Ctrl LCTRL LANGUAGE_1>, <&kp CAPSLOCK>;
-        };
-
         Lang_or_Ctrl: Lang_or_Ctrl {
             compatible = "zmk,behavior-hold-tap";
             label = "LANG_OR_CTRL";
             bindings = <&kp>, <&kp>;
 
             #binding-cells = <2>;
-            tapping-term-ms = <150>;
-            flavor = "hold-preferred";
+            tapping-term-ms = <200>;
+            flavor = "tap-preferred";
+            hold-trigger-key-positions = <27 28>;
+            quick-tap-ms = <150>;
         };
 
         Basic_hold_tap: Basic_hold_tap {
@@ -71,6 +66,13 @@
             #binding-cells = <2>;
             tapping-term-ms = <250>;
             flavor = "tap-preferred";
+        };
+
+        shiftorcaps: shiftorcaps {
+            compatible = "zmk,behavior-tap-dance";
+            label = "SHIFTORCAPS";
+            #binding-cells = <0>;
+            bindings = <&kp LEFT_SHIFT>, <&kp CAPSLOCK>;
         };
     };
 
@@ -112,10 +114,10 @@
         Default {
             label = "DEFAULT";
             bindings = <
-&Tab_or_Esc ESC TAB  &kp Q                &kp W  &kp E         &kp R             &kp T          &kp Y       &kp U  &kp I      &kp O    &kp P                            &mt LC(BSPC) BSPC
-&lang_Ctrl_Caps      &ctrlA_or_A LC(A) A  &kp S  &kp D         &Alt_or_F LALT F  &kp G          &kp H       &kp J  &kp K      &kp L    &Basic_hold_tap LCTRL SEMICOLON  &kp SQT
-&kp LSHIFT           &kp Z                &kp X  &kp C         &kp V             &kp B          &kp N       &kp M  &kp COMMA  &kp DOT  &kp FSLH                         &kp RSHFT
-                                                 &kp LEFT_GUI  &mo 1             &lt 2 SPACE    &kp RSHIFT  &mo 1  &mo 2
+&Tab_or_Esc ESC TAB        &kp Q                &kp W  &kp E         &kp R             &kp T          &kp Y       &kp U  &kp I      &kp O    &kp P                            &mt LC(BSPC) BSPC
+&Lang_or_Ctrl LANG1 LCTRL  &ctrlA_or_A LC(A) A  &kp S  &kp D         &Alt_or_F LALT F  &kp G          &kp H       &kp J  &kp K      &kp L    &Basic_hold_tap LCTRL SEMICOLON  &kp SQT
+&kp LSHIFT                 &kp Z                &kp X  &kp C         &kp V             &kp B          &kp N       &kp M  &kp COMMA  &kp DOT  &kp FSLH                         &kp RSHFT
+                                                       &kp LEFT_GUI  &mo 1             &lt 2 SPACE    &kp RSHIFT  &mo 1  &mo 2
             >;
         };
 
@@ -162,7 +164,7 @@
             label = "ma";
             bindings = <
 &Tab_or_Esc ESC TAB  &kp Q                &kp W  &kp E         &kp R             &kp T          &kp Y       &kp U  &kp I      &kp O    &kp P                            &mt LC(BSPC) BSPC
-&lang_Ctrl_Caps      &ctrlA_or_A LC(A) A  &kp S  &kp D         &Alt_or_F LALT F  &kp G          &kp H       &kp J  &kp K      &kp L    &Basic_hold_tap LCTRL SEMICOLON  &kp SQT
+&none                &ctrlA_or_A LC(A) A  &kp S  &kp D         &Alt_or_F LALT F  &kp G          &kp H       &kp J  &kp K      &kp L    &Basic_hold_tap LCTRL SEMICOLON  &kp SQT
 &kp LSHIFT           &kp Z                &kp X  &kp C         &kp V             &kp B          &kp N       &kp M  &kp COMMA  &kp DOT  &kp FSLH                         &kp RSHFT
                                                  &kp LEFT_GUI  &mo 1             &lt 2 SPACE    &kp RSHIFT  &mo 1  &mo 2
             >;
