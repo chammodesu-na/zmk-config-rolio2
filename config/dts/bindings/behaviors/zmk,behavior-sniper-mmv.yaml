@@ -6,14 +6,18 @@ properties:
     type: int
     required: true
     description: Layer number for Slow Mode
-  
   fast-layer:
     type: int
     required: true
     description: Layer number for Fast Mode
-  
   delay-ms:
     type: int
     required: false
     default: 10
     description: Polling interval in ms
+    
+  # 🔥 [핵심 수정] 이 부분이 없어서 에러가 났던 겁니다!
+  # "이 비헤이비어는 키맵에서 값 2개를 받아야 한다"고 컴파일러에게 알려줍니다.
+  "#binding-cells":
+    type: int
+    const: 2
