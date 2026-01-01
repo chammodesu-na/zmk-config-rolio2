@@ -85,7 +85,7 @@
             compatible = "zmk,behavior-input-two-axis";
             #binding-cells = <1>;
             x-input-code = <INPUT_REL_X>;
-            y-input-code = <INPUT_REL_Y>;!
+            y-input-code = <INPUT_REL_Y>;
         };
 
         mmv_slow: mmv_slow {
