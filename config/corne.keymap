@@ -77,10 +77,10 @@
         sniper_mmv: behavior_sniper_mmv {
             compatible = "zmk,behavior-sniper-mmv";
             #binding-cells = <1>;
-            x-input-code = <INPUT_REL_X>;
-            y-input-code = <INPUT_REL_Y>;
+        
             slow-layer = <5>;
             fast-layer = <6>;
+            base_speed = <15>;
             delay-ms = <10>;
         };
     };
