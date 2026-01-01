@@ -79,19 +79,13 @@
             #binding-cells = <1>;
             x-input-code = <INPUT_REL_X>;
             y-input-code = <INPUT_REL_Y>;
-            acceleration-exponent = <0>;
-            time-to-max-speed-ms = <0>;
-            d-max = <8>;
         };
 
         mmv_fast: mmv_fast {
             compatible = "zmk,behavior-input-two-axis";
             #binding-cells = <1>;
             x-input-code = <INPUT_REL_X>;
-            y-input-code = <INPUT_REL_Y>;
-            acceleration-exponent = <0>;
-            time-to-max-speed-ms = <0>;
-            d-max = <15>;
+            y-input-code = <INPUT_REL_Y>;!
         };
 
         mmv_slow: mmv_slow {
@@ -99,9 +93,6 @@
             #binding-cells = <1>;
             x-input-code = <INPUT_REL_X>;
             y-input-code = <INPUT_REL_Y>;
-            acceleration-exponent = <0>;
-            time-to-max-speed-ms = <0>;
-            d-max = <3>;
         };
 
         msc_fast: msc_fast {
@@ -109,19 +100,13 @@
             #binding-cells = <1>;
             x-input-code = <INPUT_REL_HWHEEL>;
             y-input-code = <INPUT_REL_WHEEL>;
-            acceleration-exponent = <0>;
-            time-to-max-speed-ms = <0>;
-            d-max = <5>;
         };
 
         msc_slow: msc_slow {
             compatible = "zmk,behavior-input-two-axis";
             #binding-cells = <1>;
             x-input-code = <INPUT_REL_HWHEEL>;
-            y-input-code = <INPUT_REL_WHEEL>;
-            acceleration-exponent = <0>;
-            time-to-max-speed-ms = <0>;
-            d-max = <1>;
+            y-input-code = <INPUT_REL_WHEEL>;;
         };
     };
 
