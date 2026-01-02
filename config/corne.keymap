@@ -118,7 +118,7 @@
         };
 
         menu {
-            bindings = <&kp C_MENU>;
+            bindings = <&kp K_CONTEXT_MENU>;
             key-positions = <19 9>;
         };
 
