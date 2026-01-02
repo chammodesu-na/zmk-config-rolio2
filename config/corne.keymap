@@ -146,6 +146,16 @@
             bindings = <&kp LS(LA(LC(F13)))>;
             key-positions = <2 4>;
         };
+
+        row {
+            bindings = <&kp LS(SPACE)>;
+            key-positions = <19 21>;
+        };
+
+        column {
+            bindings = <&kp LC(SPACE)>;
+            key-positions = <8 20>;
+        };
     };
 
     keymap {
