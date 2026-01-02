@@ -131,6 +131,11 @@
             bindings = <&F4_or_AltF4 LA(F4) F4>;
             key-positions = <16 4>;
         };
+
+        search {
+            bindings = <&kp LA(INSERT)>;
+            key-positions = <38 39>;
+        };
     };
 
     keymap {
