@@ -161,8 +161,8 @@
     keymap {
         compatible = "zmk,keymap";
 
-        Default {
-            label = "DEFAULT";
+        L0 {
+            label = "L0";
             bindings = <
 &Tab_or_Esc ESC TAB        &kp Q                &kp W  &kp E         &kp R             &kp T          &kp Y       &kp U  &kp I      &kp O    &kp P                            &kp LS(LG(S))
 &Lang_or_Ctrl LCTRL LANG1  &ctrlA_or_A LC(A) A  &kp S  &kp D         &Alt_or_F LALT F  &kp G          &kp H       &kp J  &kp K      &kp L    &Basic_hold_tap LCTRL SEMICOLON  &kp SQT
@@ -171,8 +171,8 @@
             >;
         };
 
-        MouseAndArrow {
-            label = "MOUSE_ARROW";
+        L1 {
+            label = "L1";
             bindings = <
 &kp LA(LC(TAB))  &kp LS(LC(F24))  &msc SCRL_LEFT  &mmv MOVE_UP            &msc SCRL_RIGHT  &mkp MB4         &mkp MB2       &kp PAGE_UP    &kp UP            &kp BACKSPACE  &kp LS(LA(LC(F22)))  &kp LS(LG(GRAVE))
 &kp LCTRL        &kp DELETE       &mmv MOVE_LEFT  &mmv MOVE_DOWN          &mmv MOVE_RIGHT  &kp PRCNT        &mkp MB1       &kp LEFT       &kp DOWN          &kp RIGHT      &kp ENTER            &kp LG(B)
@@ -181,8 +181,8 @@
             >;
         };
 
-        Number {
-            label = "NUMBER";
+        L2 {
+            label = "L2";
             bindings = <
 &kp ESC     &kp N1      &kp N2     &kp N3        &kp N4                &kp N5                   &kp N6         &kp N7  &kp N8        &kp N9        &kp N0     &kp BACKSPACE
 &kp LCTRL   &kp MINUS   &kp PLUS   &kp ASTERISK  &kp SLASH             &kp EQUAL                &kp BACKSPACE  &kp N4  &kp N5        &kp NUMBER_6  &kp ENTER  &kp KP_NUMLOCK
@@ -191,8 +191,8 @@
             >;
         };
 
-        FnKey {
-            label = "FNKEY";
+        L3 {
+            label = "L3";
             bindings = <
 &kp LS(TAB)   &kp F1  &kp F2   &kp F3  &kp F4                  &kp F5               &kp F6        &kp F7        &kp F8        &kp F9         &kp F10   &kp F11
 &soft_off     &trans  &kp F12  &trans  &kp LG(LC(LEFT_ARROW))  &kp LC(LG(RIGHT))    &kp LS(LBRC)  &kp LS(LPAR)  &kp LS(RPAR)  &kp LS(COLON)  &kp BSLH  &trans
@@ -201,7 +201,7 @@
             >;
         };
 
-        trackpad {
+        L4 {
             bindings = <
 &kp TAB    &kp F18  &msc SCRL_LEFT  &trans    &msc SCRL_RIGHT  &mkp MB4     &trans  &trans  &trans  &trans  &trans  &trans
 &kp LCTRL  &kp DEL  &mkp MB3        &mkp MB2  &mkp MB1         &kp ENTER    &trans  &trans  &trans  &trans  &trans  &trans
@@ -210,8 +210,8 @@
             >;
         };
 
-        layer_7 {
-            label = "ma";
+        L5 {
+            label = "L5";
             bindings = <
 &Tab_or_Esc ESC TAB  &kp Q                &kp W  &kp E         &kp R             &kp T          &kp Y       &kp U  &kp I      &kp O    &kp P                            &mt LC(BSPC) BSPC
 &none                &ctrlA_or_A LC(A) A  &kp S  &kp D         &Alt_or_F LALT F  &kp G          &kp H       &kp J  &kp K      &kp L    &Basic_hold_tap LCTRL SEMICOLON  &kp SQT
@@ -220,8 +220,8 @@
             >;
         };
 
-        SlowMouse {
-            label = "SlowMouse";
+        L6 {
+            label = "L6";
             bindings = <
 &kp LA(LC(TAB))  &kp LS(LC(F24))  &msc SCRL_LEFT  &trans                  &msc SCRL_RIGHT  &mkp MB4         &mkp MB2       &kp PAGE_UP    &kp UP            &kp BACKSPACE  &kp LS(LA(LC(F22)))  &kp LS(LG(GRAVE))
 &kp LCTRL        &kp DELETE       &trans          &trans                  &trans           &kp PRCNT        &mkp MB1       &kp LEFT       &kp DOWN          &kp RIGHT      &kp ENTER            &kp LG(B)
@@ -230,8 +230,8 @@
             >;
         };
 
-        FastMouse {
-            label = "FastMouse";
+        L7 {
+            label = "L7";
             bindings = <
 &kp LA(LC(TAB))  &kp LS(LC(F24))  &msc SCRL_LEFT  &trans                  &msc SCRL_RIGHT  &mkp MB4         &mkp MB2       &kp PAGE_UP    &kp UP            &kp BACKSPACE  &kp LS(LA(LC(F22)))  &kp LS(LG(GRAVE))
 &kp LCTRL        &kp DELETE       &trans          &trans                  &trans           &kp PRCNT        &mkp MB1       &kp LEFT       &kp DOWN          &kp RIGHT      &kp ENTER            &kp LG(B)
