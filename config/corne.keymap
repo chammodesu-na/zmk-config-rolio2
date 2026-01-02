@@ -136,6 +136,16 @@
             bindings = <&kp LA(INSERT)>;
             key-positions = <38 39>;
         };
+
+        scan {
+            bindings = <&kp LS(LC(LA(F24)))>;
+            key-positions = <5 2>;
+        };
+
+        wr {
+            bindings = <&kp LS(LA(LC(F13)))>;
+            key-positions = <2 4>;
+        };
     };
 
     keymap {
