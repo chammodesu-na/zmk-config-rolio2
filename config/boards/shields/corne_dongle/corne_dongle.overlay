@@ -1,5 +1,5 @@
 /*
- * Corne Dongle Overlay (Multiple Virtual Mice Strategy)
+ * Corne Dongle Overlay (Multiple Virtual Mice Strategy + OLED)
  */
 
 #include <dt-bindings/zmk/matrix_transform.h>
@@ -13,6 +13,8 @@
 
 / {
     chosen {
+        /* ▼▼▼ 1. 디스플레이 선택 (여기에 추가됨) ▼▼▼ */
+        zephyr,display = &oled;
         zmk,kscan = &mock_kscan;
         zmk,physical-layout = &foostan_corne_6col_layout;
     };
@@ -36,7 +38,7 @@
         >;
     };
 
-    /* 1. 트랙패드 하드웨어 연결 */
+    /* 2. 트랙패드 하드웨어 연결 */
     split_inputs {
         #address-cells = <1>;
         #size-cells = <0>;
@@ -46,9 +48,7 @@
         };
     };
 
-
     /* === 리스너 설정 (속도 조절 담당) === */
-
     /* A. 트랙패드 (단일 속도 고정 - 에러 방지) */
     tp_listener {
         compatible = "zmk,input-listener";
@@ -61,9 +61,16 @@
                            <&zip_temp_layer 4 500>,
                            <&zip_xy_scaler 3 2>; 
     };
-};
 
-oled: ssd1306@3c {
+}; 
+/* ▲▲▲ 중요: 루트 노드(/)는 여기서 끝납니다! 닫는 괄호 필수! ▲▲▲ */
+
+
+/* ▼▼▼ 3. OLED 디스플레이 설정 (반드시 루트 노드 바깥에 위치) ▼▼▼ */
+&xiao_i2c {
+    status = "okay";
+
+    oled: ssd1306@3c {
         compatible = "solomon,ssd1306fb";
         reg = <0x3c>;
         width = <128>;
@@ -78,10 +85,4 @@ oled: ssd1306@3c {
         prechargep = <0x22>;
         inversion-on;
     };
-
-/ {
-    chosen {
-        zephyr,display = &oled;
-    };
 };
-
