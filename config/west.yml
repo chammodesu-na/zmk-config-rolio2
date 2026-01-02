@@ -18,7 +18,7 @@ manifest:
       remote: AYM1607
       revision: main
     - name: zmk-dongle-display
-      remote: chammodesu-na
+      remote: englmaxi
       revision: v0.3
   self:
     path: config
