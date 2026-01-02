@@ -203,10 +203,10 @@
 
         trackpad {
             bindings = <
-&kp TAB    &trans   &msc SCRL_LEFT  &trans    &msc SCRL_RIGHT  &mkp MB4     &trans  &trans  &trans  &trans  &trans  &trans
+&kp TAB    &kp F18  &msc SCRL_LEFT  &trans    &msc SCRL_RIGHT  &mkp MB4     &trans  &trans  &trans  &trans  &trans  &trans
 &kp LCTRL  &kp DEL  &mkp MB3        &mkp MB2  &mkp MB1         &kp ENTER    &trans  &trans  &trans  &trans  &trans  &trans
 &kp LSHFT  &kp F24  &msc SCRL_UP    &trans    &msc SCRL_DOWN   &trans       &trans  &trans  &trans  &trans  &trans  &trans
-                                    &kp LGUI  &kp LCTRL        &kp LSHFT    &trans  &trans  &trans
+                                    &kp LGUI  &kp F16          &kp F17      &trans  &trans  &trans
             >;
         };
 
