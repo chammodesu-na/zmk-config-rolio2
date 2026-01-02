@@ -7,8 +7,6 @@ manifest:
     # nice_oled - nice_epaper - dongle_display!view - oled Adapter
     - name: AYM1607
       url-base: https://github.com/AYM1607
-    - name: caksoylar
-      url-base: https://github.com/caksoylar
   projects:
     - name: zmk
       remote: zmkfirmware
@@ -16,9 +14,6 @@ manifest:
       import: app/west.yml
     - name: zmk-driver-azoteq-iqs5xx
       remote: AYM1607
-      revision: main
-    - name: zmk-dongle-display
-      remote: caksoylar
       revision: main
   self:
     path: config
