@@ -8,7 +8,7 @@ manifest:
     - name: AYM1607
       url-base: https://github.com/AYM1607
     - name: englmaxi
-      url-base: https://github.com/englmaxi
+      url-base: https://github.com/chammodesu-na
   projects:
     - name: zmk
       remote: zmkfirmware
@@ -18,7 +18,7 @@ manifest:
       remote: AYM1607
       revision: main
     - name: zmk-dongle-display
-      remote: englmaxi
+      remote: chammodesu-na
       revision: v0.3
   self:
     path: config
