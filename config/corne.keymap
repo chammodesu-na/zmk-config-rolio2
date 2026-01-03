@@ -191,7 +191,7 @@
 &Tab_or_Esc ESC TAB        &kp Q                &kp W  &kp E         &kp R             &kp T          &kp Y       &kp U  &kp I      &kp O    &kp P                            &kp LS(LG(S))
 &Lang_or_Ctrl LCTRL LANG1  &ctrlA_or_A LC(A) A  &kp S  &kp D         &Alt_or_F LALT F  &kp G          &kp H       &kp J  &kp K      &kp L    &Basic_hold_tap LCTRL SEMICOLON  &kp SQT
 &kp LSHIFT                 &kp Z                &kp X  &kp C         &kp V             &kp B          &kp N       &kp M  &kp COMMA  &kp DOT  &kp FSLH                         &kp LEFT_ALT
-                                                       &kp LEFT_GUI  &mo 2             &lt 2 SPACE    &kp RSHIFT  &mo 2  &mo 2
+                                                       &kp LEFT_GUI  &mo 1             &lt 2 SPACE    &kp RSHIFT  &mo 1  &mo 2
             >;
         };
 
@@ -220,7 +220,7 @@
             bindings = <
 &kp LS(TAB)   &kp F1  &kp F2   &kp F3  &kp F4                  &kp F5               &kp F6        &kp F7        &kp F8        &kp F9         &kp F10   &kp F11
 &soft_off     &trans  &kp F12  &trans  &kp LG(LC(LEFT_ARROW))  &kp LC(LG(RIGHT))    &kp LS(LBRC)  &kp LS(LPAR)  &kp LS(RPAR)  &kp LS(COLON)  &kp BSLH  &trans
-&out OUT_TOG  &trans  &to 5    &trans  &ob_task                &kp F23              &kp LS(RBRC)  &kp LBKT      &kp RBKT      &kp N3         &trans    &trans
+&out OUT_TOG  &trans  &trans   &trans  &ob_task                &kp F23              &kp LS(RBRC)  &kp LBKT      &kp RBKT      &kp N3         &trans    &trans
                                &trans  &trans                  &kp SPACE            &trans        &trans        &trans
             >;
         };
