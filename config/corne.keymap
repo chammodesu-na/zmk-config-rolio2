@@ -90,7 +90,7 @@
         teamcode: teamcode {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&none &kp N1 &kp N0 &kp N0 &kp N2 &kp N6 &kp N2 &kp N0 &kp N0 &kp N0>;
+            bindings = <&kp N1 &kp N0 &kp N0 &kp N2 &kp N6 &kp N2 &kp N0 &kp N0 &kp N0>;
             label = "TEAMCODE";
         };
 
@@ -106,6 +106,20 @@
             #binding-cells = <0>;
             bindings = <&kp F15 &out OUT_TOG>;
             label = "IPHONE_LOCK";
+        };
+
+        MS_AlignCenter: MS_AlignCenter {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LEFT_ALT &kp H &kp A &kp C>;
+            label = "MS_ALIGNCENTER";
+        };
+
+        MS_fill: MS_fill {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LEFT_ALT &kp H &kp DOWN &kp DOWN &kp RIGHT &kp UP_ARROW &kp RIGHT &kp ENTER>;
+            label = "MS_FILL";
         };
     };
 
