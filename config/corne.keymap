@@ -170,6 +170,16 @@
             bindings = <&kp LC(SPACE)>;
             key-positions = <8 20>;
         };
+
+        ms_fill {
+            bindings = <&MS_fill>;
+            key-positions = <27 15>;
+        };
+
+        MS_AlignCenter {
+            bindings = <&MS_AlignCenter>;
+            key-positions = <13 27>;
+        };
     };
 
     keymap {
@@ -181,7 +191,7 @@
 &Tab_or_Esc ESC TAB        &kp Q                &kp W  &kp E         &kp R             &kp T          &kp Y       &kp U  &kp I      &kp O    &kp P                            &kp LS(LG(S))
 &Lang_or_Ctrl LCTRL LANG1  &ctrlA_or_A LC(A) A  &kp S  &kp D         &Alt_or_F LALT F  &kp G          &kp H       &kp J  &kp K      &kp L    &Basic_hold_tap LCTRL SEMICOLON  &kp SQT
 &kp LSHIFT                 &kp Z                &kp X  &kp C         &kp V             &kp B          &kp N       &kp M  &kp COMMA  &kp DOT  &kp FSLH                         &kp LEFT_ALT
-                                                       &kp LEFT_GUI  &mo 1             &lt 2 SPACE    &kp RSHIFT  &mo 1  &mo 2
+                                                       &kp LEFT_GUI  &mo 2             &lt 2 SPACE    &kp RSHIFT  &mo 2  &mo 2
             >;
         };
 
@@ -189,7 +199,7 @@
             label = "Move";
             bindings = <
 &kp LA(LC(TAB))  &kp LS(LC(F24))  &msc SCRL_LEFT  &mmv MOVE_UP            &msc SCRL_RIGHT  &mkp MB4         &mkp MB2       &kp PAGE_UP    &kp UP            &kp BACKSPACE  &kp LS(LA(LC(F22)))  &kp LS(LG(GRAVE))
-&kp LCTRL        &kp DELETE       &mmv MOVE_LEFT  &mmv MOVE_DOWN          &mmv MOVE_RIGHT  &kp PRCNT        &mkp MB1       &kp LEFT       &kp DOWN          &kp RIGHT      &kp ENTER            &kp LG(B)
+&kp LCTRL        &kp DELETE       &mmv MOVE_LEFT  &mmv MOVE_DOWN          &mmv MOVE_RIGHT  &kp ENTER        &mkp MB1       &kp LEFT       &kp DOWN          &kp RIGHT      &kp ENTER            &kp LG(B)
 &kp LEFT_SHIFT   &kp F24          &msc SCRL_UP    &kp LS(LA(LC(PERIOD)))  &msc SCRL_DOWN   &kp LC(LA(V))    &kp LS(GRAVE)  &kp PAGE_DOWN  &kp LS(NUMBER_1)  &kp F16        &kp F17              &kp LEFT_ALT
                                                   &trans                  &trans           &kp LALT         &kp LA(ENTER)  &trans         &mo 3
             >;
@@ -217,10 +227,10 @@
 
         L4 {
             bindings = <
-&kp TAB    &kp F18  &msc SCRL_LEFT  &trans    &msc SCRL_RIGHT  &mkp MB4     &trans  &trans  &trans  &trans  &trans  &trans
-&kp LCTRL  &kp DEL  &mkp MB3        &mkp MB2  &mkp MB1         &kp ENTER    &trans  &trans  &trans  &trans  &trans  &trans
-&kp LSHFT  &kp F24  &msc SCRL_UP    &trans    &msc SCRL_DOWN   &trans       &trans  &trans  &trans  &trans  &trans  &trans
-                                    &kp LGUI  &kp F16          &kp F17      &trans  &trans  &trans
+&kp TAB    &kp F18  &msc SCRL_LEFT  &trans    &msc SCRL_RIGHT  &mkp MB4     &kp LC(C)  &kp LC(V)  &trans  &trans  &trans  &trans
+&kp LCTRL  &kp DEL  &mkp MB3        &mkp MB2  &mkp MB1         &kp ENTER    &mkp MB1   &trans     &trans  &trans  &trans  &trans
+&kp LSHFT  &kp F24  &msc SCRL_UP    &trans    &msc SCRL_DOWN   &trans       &trans     &trans     &trans  &trans  &trans  &trans
+                                    &kp LGUI  &kp F16          &kp F17      &kp LC(C)  &kp LC(V)  &trans
             >;
 
             label = "Track";
@@ -232,7 +242,7 @@
 &Tab_or_Esc ESC TAB  &kp Q                &kp W  &kp E         &kp R             &kp T          &kp Y       &kp U  &kp I      &kp O    &kp P                            &mt LC(BSPC) BSPC
 &none                &ctrlA_or_A LC(A) A  &kp S  &kp D         &Alt_or_F LALT F  &kp G          &kp H       &kp J  &kp K      &kp L    &Basic_hold_tap LCTRL SEMICOLON  &kp SQT
 &kp LSHIFT           &kp Z                &kp X  &kp C         &kp V             &kp B          &kp N       &kp M  &kp COMMA  &kp DOT  &kp FSLH                         &kp RSHFT
-                                                 &kp LEFT_GUI  &mo 1             &lt 2 SPACE    &kp RSHIFT  &mo 1  &mo 2
+                                                 &kp LEFT_GUI  &mo 2             &lt 2 SPACE    &kp RSHIFT  &mo 2  &mo 2
             >;
         };
 
