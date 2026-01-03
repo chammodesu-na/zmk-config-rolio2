@@ -235,35 +235,5 @@
 
             label = "Track";
         };
-
-        L5 {
-            label = "L5";
-            bindings = <
-&Tab_or_Esc ESC TAB  &kp Q                &kp W  &kp E         &kp R             &kp T          &kp Y       &kp U  &kp I      &kp O    &kp P                            &mt LC(BSPC) BSPC
-&none                &ctrlA_or_A LC(A) A  &kp S  &kp D         &Alt_or_F LALT F  &kp G          &kp H       &kp J  &kp K      &kp L    &Basic_hold_tap LCTRL SEMICOLON  &kp SQT
-&kp LSHIFT           &kp Z                &kp X  &kp C         &kp V             &kp B          &kp N       &kp M  &kp COMMA  &kp DOT  &kp FSLH                         &kp RSHFT
-                                                 &kp LEFT_GUI  &mo 2             &lt 2 SPACE    &kp RSHIFT  &mo 2  &mo 2
-            >;
-        };
-
-        L6 {
-            label = "L6";
-            bindings = <
-&kp LA(LC(TAB))  &kp LS(LC(F24))  &msc SCRL_LEFT  &trans                  &msc SCRL_RIGHT  &mkp MB4         &mkp MB2       &kp PAGE_UP    &kp UP            &kp BACKSPACE  &kp LS(LA(LC(F22)))  &kp LS(LG(GRAVE))
-&kp LCTRL        &kp DELETE       &trans          &trans                  &trans           &kp PRCNT        &mkp MB1       &kp LEFT       &kp DOWN          &kp RIGHT      &kp ENTER            &kp LG(B)
-&kp LEFT_SHIFT   &kp LG(DOT)      &msc SCRL_UP    &kp LS(LA(LC(PERIOD)))  &msc SCRL_DOWN   &kp LC(LA(V))    &kp LS(GRAVE)  &kp PAGE_DOWN  &kp LS(NUMBER_1)  &mo 6          &mo 7                &kp RCTRL
-                                                  &trans                  &trans           &kp LALT         &kp LA(ENTER)  &trans         &mo 3
-            >;
-        };
-
-        L7 {
-            label = "L7";
-            bindings = <
-&kp LA(LC(TAB))  &kp LS(LC(F24))  &msc SCRL_LEFT  &trans                  &msc SCRL_RIGHT  &mkp MB4         &mkp MB2       &kp PAGE_UP    &kp UP            &kp BACKSPACE  &kp LS(LA(LC(F22)))  &kp LS(LG(GRAVE))
-&kp LCTRL        &kp DELETE       &trans          &trans                  &trans           &kp PRCNT        &mkp MB1       &kp LEFT       &kp DOWN          &kp RIGHT      &kp ENTER            &kp LG(B)
-&kp LEFT_SHIFT   &kp LG(DOT)      &msc SCRL_UP    &kp LS(LA(LC(PERIOD)))  &msc SCRL_DOWN   &kp LC(LA(V))    &kp LS(GRAVE)  &kp PAGE_DOWN  &kp LS(NUMBER_1)  &mo 6          &mo 7                &kp RCTRL
-                                                  &trans                  &trans           &kp LALT         &kp LA(ENTER)  &trans         &mo 3
-            >;
-        };
     };
 };
