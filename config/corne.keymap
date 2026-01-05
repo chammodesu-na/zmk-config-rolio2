@@ -104,7 +104,7 @@
         iphone_lock: iphone_lock {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp F15 &out OUT_TOG>;
+            bindings = <&kp F15 &out OUT_TOG &tog 5>;
             label = "IPHONE_LOCK";
         };
 
@@ -180,6 +180,11 @@
             bindings = <&MS_AlignCenter>;
             key-positions = <13 27>;
         };
+
+        ToType {
+            bindings = <&to 0>;
+            key-positions = <19 20 21 22>;
+        };
     };
 
     keymap {
@@ -234,6 +239,17 @@
             >;
 
             label = "Track";
+        };
+
+        L5 {
+            bindings = <
+&trans     &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&kp GLOBE  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans     &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+                           &trans  &trans  &trans    &trans  &trans  &trans
+            >;
+
+            label = "APPLE";
         };
     };
 };
