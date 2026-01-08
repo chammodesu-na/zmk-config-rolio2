@@ -251,9 +251,9 @@
 
         L5 {
             bindings = <
-&trans     &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans                                  &trans
-&kp GLOBE  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &Basic_hold_tap LEFT_COMMAND SEMICOLON  &trans
-&trans     &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans                                  &trans
+&trans     &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&kp GLOBE  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans     &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &kp LCMD
                            &trans  &trans  &trans    &trans  &trans  &trans
             >;
 
