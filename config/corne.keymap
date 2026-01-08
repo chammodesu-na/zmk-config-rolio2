@@ -243,7 +243,7 @@
 &kp TAB    &kp F18  &msc SCRL_LEFT  &trans    &msc SCRL_RIGHT  &mkp MB4     &kp LC(C)  &kp LC(V)  &trans  &trans  &trans  &trans
 &kp LCTRL  &kp DEL  &mkp MB3        &mkp MB2  &mkp MB1         &kp ENTER    &mkp MB1   &trans     &trans  &trans  &trans  &trans
 &kp LSHFT  &kp F24  &msc SCRL_UP    &trans    &msc SCRL_DOWN   &trans       &trans     &trans     &trans  &trans  &trans  &trans
-                                    &kp LGUI  &kp F16          &kp F17      &kp LC(C)  &kp LC(V)  &trans
+                                    &kp LGUI  &kp F16          &kp F17      &to 0      &to 5      &trans
             >;
 
             label = "Track";
