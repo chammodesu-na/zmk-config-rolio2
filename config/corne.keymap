@@ -229,7 +229,7 @@
 &kp LA(LC(TAB))  &kp LS(LC(F24))  &msc SCRL_LEFT  &mmv MOVE_UP            &msc SCRL_RIGHT  &mkp MB4         &mkp MB2       &kp PAGE_UP    &kp UP            &kp BACKSPACE  &kp LS(LA(LC(F22)))  &kp LS(LG(GRAVE))
 &kp LCTRL        &kp DELETE       &mmv MOVE_LEFT  &mmv MOVE_DOWN          &mmv MOVE_RIGHT  &kp ENTER        &mkp MB1       &kp LEFT       &kp DOWN          &kp RIGHT      &kp ENTER            &kp LG(B)
 &kp LEFT_SHIFT   &kp F24          &msc SCRL_UP    &kp LS(LA(LC(PERIOD)))  &msc SCRL_DOWN   &kp LC(LA(V))    &kp LS(GRAVE)  &kp PAGE_DOWN  &kp LS(NUMBER_1)  &kp F16        &kp F17              &kp RCTRL
-                                                  &trans                  &trans           &kp LALT         &kp LA(ENTER)  &trans         &mo 3
+                                                  &trans                  &trans           &kp LALT         &AltEnter      &trans         &mo 3
             >;
         };
 
