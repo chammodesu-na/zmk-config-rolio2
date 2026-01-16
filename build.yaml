@@ -1,6 +1,6 @@
 include:
   # Add custom dongle and a peripheral left corne
-  - board: seeeduino_xiao_ble
+  - board: nice_nano
     shield: corne_dongle dongle_display
     snippet: studio-rpc-usb-uart
     cmake-args: -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=y -DCONFIG_ZMK_STUDIO=y -DCONFIG_ZMK_STUDIO_LOCKING=n
