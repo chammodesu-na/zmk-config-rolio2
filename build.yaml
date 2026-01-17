@@ -19,8 +19,10 @@ include:
   # reset_settings
   - board: nice_nano_v2
     shield: settings_reset
-    artifact-name: nano_reset_settings
+    artifact-name: nano2_reset_settings
 
-  - board: seeeduino_xiao_ble
+
+  - board: nice_nano
     shield: settings_reset
-    artifact-name: xiao_reset_settings
+    artifact-name: nano_reset_settings
+  
