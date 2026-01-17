@@ -246,10 +246,10 @@
         L3 {
             label = "FN";
             bindings = <
-&kp LS(TAB)   &kp F1          &kp F2   &kp F3  &kp F4                  &kp F5               &kp F6        &kp F7        &kp F8        &kp F9         &kp F10   &kp F11
-&soft_off     &trans          &kp F12  &trans  &kp LG(LC(LEFT_ARROW))  &kp LC(LG(RIGHT))    &kp LS(LBRC)  &kp LS(LPAR)  &kp LS(RPAR)  &kp LS(COLON)  &kp BSLH  &trans
-&out OUT_TOG  &bt BT_CLR_ALL  &trans   &trans  &ob_task                &kp F23              &kp LS(RBRC)  &kp LBKT      &kp RBKT      &kp N3         &trans    &trans
-                                       &trans  &trans                  &kp SPACE            &trans        &trans        &trans
+&kp LS(TAB)  &kp F1          &kp F2   &kp F3  &kp F4                  &kp F5               &kp F6        &kp F7        &kp F8        &kp F9         &kp F10   &kp F11
+&bt BT_NXT   &trans          &kp F12  &trans  &kp LG(LC(LEFT_ARROW))  &kp LC(LG(RIGHT))    &kp LS(LBRC)  &kp LS(LPAR)  &kp LS(RPAR)  &kp LS(COLON)  &kp BSLH  &trans
+&bt BT_PRV   &bt BT_CLR_ALL  &trans   &trans  &ob_task                &kp F23              &kp LS(RBRC)  &kp LBKT      &kp RBKT      &kp N3         &trans    &trans
+                                      &trans  &trans                  &kp SPACE            &trans        &trans        &trans
             >;
         };
 
