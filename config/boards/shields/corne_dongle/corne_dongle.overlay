@@ -87,6 +87,25 @@
 };
 
 
+/ {
+    vbatt: vbatt {
+        compatible = "zmk,battery-voltage-divider";
+        label = "BATTERY";
+        // Nice!Nano V1은 P0.04(4번) 핀을 사용합니다. (V2는 31번)
+        io-channels = <&adc 4>; 
+        output-ohms = <2000000>;
+        full-ohms = <(2000000 + 806000)>;
+    };
+
+    chosen {
+        zmk,battery = &vbatt;
+    };
+};
+
+// 혹시 ADC가 비활성화되어 있을 수 있으니 추가합니다.
+&adc {
+    status = "okay";
+};
 
 
 
