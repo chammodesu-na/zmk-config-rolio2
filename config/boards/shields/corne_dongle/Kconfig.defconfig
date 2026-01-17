@@ -18,26 +18,6 @@ config BT_MAX_CONN
 config BT_MAX_PAIRED
     default 5
 
-# USB Composite Device 설정
-config USB_DEVICE_STACK
-    default y
-
-config USB_COMPOSITE_DEVICE
-    default y
-
-# Serial 설정
-config SERIAL
-    default y
-
-config UART_INTERRUPT_DRIVEN
-    default y
-
-config UART_LINE_CTRL
-    default y
-
-config USB_CDC_ACM
-    default y
-
 # Dongle Status Serial 활성화
 config DONGLE_STATUS_SERIAL
     default y
