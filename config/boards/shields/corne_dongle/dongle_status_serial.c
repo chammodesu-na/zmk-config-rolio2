@@ -1,16 +1,12 @@
 #include <zephyr/kernel.h>
-#include <zephyr/device.h>
-#include <zephyr/drivers/uart.h>
-#include <zephyr/usb/usb_device.h>
 #include <zephyr/logging/log.h>
-#include <stdio.h>
+#include <zephyr/sys/printk.h>
 
 #include <zmk/event_manager.h>
 #include <zmk/events/layer_state_changed.h>
 #include <zmk/events/endpoint_changed.h>
 #include <zmk/keymap.h>
 #include <zmk/endpoints.h>
-#include <zmk/hid.h>
 
 #if IS_ENABLED(CONFIG_ZMK_HID_INDICATORS)
 #include <zmk/hid_indicators.h>
@@ -28,9 +24,6 @@
 
 LOG_MODULE_REGISTER(dongle_serial, LOG_LEVEL_INF);
 
-static const struct device *uart_dev;
-static bool usb_ready = false;
-
 struct status_state {
     uint8_t layer;
     uint8_t battery;
@@ -45,13 +38,7 @@ struct status_state {
 static struct status_state status = {0};
 
 static void send_status(void) {
-    if (!uart_dev || !usb_ready) {
-        return;
-    }
-
-    char buf[256];
-    int len = snprintf(buf, sizeof(buf),
-        "{\"l\":%d,\"n\":\"%s\",\"b\":%d,\"w\":%d,\"c\":%d,\"nm\":%d,\"s\":%d,\"u\":%d}\n",
+    printk("{\"l\":%d,\"n\":\"%s\",\"b\":%d,\"w\":%d,\"c\":%d,\"nm\":%d,\"s\":%d,\"u\":%d}\n",
         status.layer,
         status.layer_name,
         status.battery,
@@ -61,12 +48,6 @@ static void send_status(void) {
         status.scroll,
         status.output_usb
     );
-
-    if (len > 0 && len < sizeof(buf)) {
-        for (int i = 0; i < len; i++) {
-            uart_poll_out(uart_dev, buf[i]);
-        }
-    }
 }
 
 static void update_layer(void) {
@@ -76,7 +57,7 @@ static void update_layer(void) {
         strncpy(status.layer_name, label, sizeof(status.layer_name) - 1);
         status.layer_name[sizeof(status.layer_name) - 1] = '\0';
     } else {
-        snprintf(status.layer_name, sizeof(status.layer_name), "L%d", status.layer);
+        snprintk(status.layer_name, sizeof(status.layer_name), "L%d", status.layer);
     }
 }
 
@@ -96,9 +77,9 @@ static void update_output(void) {
 static void update_indicators(void) {
 #if IS_ENABLED(CONFIG_ZMK_HID_INDICATORS)
     zmk_hid_indicators_t indicators = zmk_hid_indicators_get_current_profile();
-    status.caps = (indicators & (1 << 1)) ? 1 : 0;   // Caps Lock bit
-    status.num = (indicators & (1 << 0)) ? 1 : 0;    // Num Lock bit
-    status.scroll = (indicators & (1 << 2)) ? 1 : 0; // Scroll Lock bit
+    status.caps = (indicators & (1 << 1)) ? 1 : 0;
+    status.num = (indicators & (1 << 0)) ? 1 : 0;
+    status.scroll = (indicators & (1 << 2)) ? 1 : 0;
 #else
     status.caps = 0;
     status.num = 0;
@@ -174,36 +155,16 @@ static void status_timer_handler(struct k_timer *timer) {
 K_TIMER_DEFINE(status_timer, status_timer_handler, NULL);
 
 static int dongle_serial_init(void) {
-    LOG_INF("Init dongle serial");
-
-    int ret = usb_enable(NULL);
-    if (ret != 0 && ret != -EALREADY) {
-        LOG_ERR("USB enable failed: %d", ret);
-        return ret;
-    }
-
-    k_sleep(K_MSEC(1000));
-    
-    uart_dev = DEVICE_DT_GET(DT_NODELABEL(cdc_acm_uart0));
-    if (!uart_dev) {
-        LOG_ERR("CDC ACM not found");
-        return -ENODEV;
-    }
-
-    if (!device_is_ready(uart_dev)) {
-        LOG_ERR("CDC ACM not ready");
-        return -ENODEV;
-    }
-
-    usb_ready = true;
+    LOG_INF("Dongle serial init");
 
     update_layer();
     update_battery();
     update_output();
     update_indicators();
     
+    k_sleep(K_MSEC(2000)); // Studio 초기화 대기
+    
     send_status();
-
     k_timer_start(&status_timer, K_MSEC(1000), K_MSEC(1000));
 
     LOG_INF("Dongle serial OK");
