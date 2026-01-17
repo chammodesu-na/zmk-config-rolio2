@@ -112,7 +112,7 @@
         iphone_lock: iphone_lock {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LC(LG(Q)) &out OUT_TOG &tog 5>;
+            bindings = <&kp LC(LG(Q)) &out OUT_TOG &tog 5 &bt BT_SEL 0>;
             label = "IPHONE_LOCK";
         };
 
