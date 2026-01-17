@@ -17,8 +17,8 @@ manifest:
     - name: zmk-driver-azoteq-iqs5xx
       remote: AYM1607
       revision: main
-    - name: zmk-dongle-display
+    - name: zmk-dongle-display-0.3
       remote: englmaxi
-      revision: v0.3-1-1.3inch
+      revision: main
   self:
     path: config
