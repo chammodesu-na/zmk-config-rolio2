@@ -117,6 +117,18 @@
     };
 };
 
+/ {
+    chosen {
+        // CDC ACM을 console로 사용하지 말고 별도로 설정
+        // zephyr,console = &cdc_acm_uart0; // 이 줄 제거
+    };
+};
+
+&zephyr_udc0 {
+    cdc_acm_uart0: cdc_acm_uart0 {
+        compatible = "zephyr,cdc-acm-uart";
+    };
+};
 
 
 
