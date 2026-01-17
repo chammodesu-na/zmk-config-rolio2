@@ -75,17 +75,17 @@
         reg = <0x3c>;
         width = <128>;
         height = <64>;  /* ← 32에서 64로 변경! */
-        segment-offset = <1>;
+        segment-offset = <2>;
         page-offset = <0>;
         display-offset = <0>;
         multiplex-ratio = <63>;  /* ← 31에서 63으로 변경! */
         segment-remap;
         com-invdir;
-        com-sequential;
         prechargep = <0x22>;
         inversion-on;
     };
 };
+
 
 
 
