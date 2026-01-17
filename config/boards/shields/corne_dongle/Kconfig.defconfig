@@ -20,6 +20,29 @@ config BT_MAX_CONN
 config BT_MAX_PAIRED
     default 5
 
+# USB Serial 설정 - 순서 중요!
+config USB_DEVICE_STACK
+    default y
+
+config SERIAL
+    default y
+
+config UART_INTERRUPT_DRIVEN
+    default y
+
+config UART_LINE_CTRL
+    default y
+
+config USB_CDC_ACM
+    default y
+
+config USB_COMPOSITE_DEVICE
+    default y
+
+# Dongle Status Serial 활성화
+config DONGLE_STATUS_SERIAL
+    default y
+
 endif
 
 if SHIELD_CORNE_LEFT || SHIELD_CORNE_RIGHT || SHIELD_CORNE_DONGLE
@@ -58,11 +81,11 @@ endif # LVGL
 
 endif
 
+# DONGLE_STATUS_SERIAL 정의를 파일 맨 아래로 이동
+# (if 블록 밖에 있어야 함)
 config DONGLE_STATUS_SERIAL
     bool "Enable dongle status serial output"
-    default y
-    select USB_DEVICE_STACK
-    select UART_CONSOLE
-    select SERIAL
+    default n
+    depends on SHIELD_CORNE_DONGLE
     help
       Enable USB serial output for dongle status information
