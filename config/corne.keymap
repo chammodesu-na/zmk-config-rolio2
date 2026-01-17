@@ -144,6 +144,13 @@
             label = "ALTENTER";
             wait-ms = <50>;
         };
+
+        ToggleBoox: ToggleBoox {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&out OUT_BLE &bt BT_SEL 1>;
+            label = "TOGGLEBOOX";
+        };
     };
 
     combos {
@@ -207,6 +214,11 @@
         ToType {
             bindings = <&to 0>;
             key-positions = <19 20 21 22>;
+        };
+
+        Toboox {
+            bindings = <&ToggleBoox>;
+            key-positions = <10 11>;
         };
     };
 
@@ -273,6 +285,17 @@
             >;
 
             label = "APPLE";
+        };
+
+        boox {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans    &kp ESC  &trans    &kp UP    &trans     &trans  &out OUT_USB
+&trans  &trans  &trans  &trans  &trans  &trans    &trans   &kp LEFT  &kp DOWN  &kp RIGHT  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans   &trans    &trans    &trans     &trans  &trans
+                        &trans  &trans  &trans    &trans   &trans    &trans
+            >;
+
+            label = "boox";
         };
     };
 };
