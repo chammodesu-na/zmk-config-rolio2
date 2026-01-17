@@ -90,23 +90,20 @@
     /* 기존 설정 충돌 방지 */
     /delete-node/ vbatt;
 
-    vbatt: vbatt {
-        compatible = "zmk,battery-voltage-divider";
-        label = "BATTERY";
-        // ★ 마지막 시도: P0.02 핀은 ADC 채널 0번입니다.
-        io-channels = <&adc 7>; 
-        output-ohms = <100000>;
-        full-ohms = <(100000 + 100000)>; 
-    };
-
     chosen {
         zmk,battery = &vbatt;
+    };
+
+    vbatt: vbatt {
+        compatible = "zmk,battery-nrf-vddh";
+        label = "BATTERY";
     };
 };
 
 &adc {
     status = "okay";
 };
+
 
 
 
