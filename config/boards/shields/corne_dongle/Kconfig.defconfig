@@ -57,3 +57,12 @@ endchoice
 endif # LVGL
 
 endif
+
+config DONGLE_STATUS_SERIAL
+    bool "Enable dongle status serial output"
+    default y
+    select USB_DEVICE_STACK
+    select UART_CONSOLE
+    select SERIAL
+    help
+      Enable USB serial output for dongle status information
