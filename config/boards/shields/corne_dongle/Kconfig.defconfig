@@ -39,11 +39,13 @@ endif # ZMK_DISPLAY
 
 if LVGL
 
+# 128x64 화면용 버퍼 크기
 config LV_Z_VDB_SIZE
     default 64
 
+# 128x64 화면용 DPI
 config LV_DPI_DEF
-    default 148
+    default 96
 
 config LV_Z_BITS_PER_PIXEL
     default 1
