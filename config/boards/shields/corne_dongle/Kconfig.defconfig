@@ -12,18 +12,20 @@ config ZMK_USB
 config ZMK_SPLIT_BLE_CENTRAL_PERIPHERALS
     default 2
 
-# Set this to ZMK_SPLIT_BLE_CENTRAL_PERIPHERALS + your desired number of BT profiles (default is 5)
 config BT_MAX_CONN
     default 5
 
-# Set this to the same number as BT_MAX_CONN
 config BT_MAX_PAIRED
     default 5
 
-# USB Serial 설정 - 순서 중요!
+# USB Composite Device 설정
 config USB_DEVICE_STACK
     default y
 
+config USB_COMPOSITE_DEVICE
+    default y
+
+# Serial 설정
 config SERIAL
     default y
 
@@ -34,9 +36,6 @@ config UART_LINE_CTRL
     default y
 
 config USB_CDC_ACM
-    default y
-
-config USB_COMPOSITE_DEVICE
     default y
 
 # Dongle Status Serial 활성화
@@ -62,11 +61,9 @@ endif # ZMK_DISPLAY
 
 if LVGL
 
-# 128x64 화면용 버퍼 크기
 config LV_Z_VDB_SIZE
     default 64
 
-# 128x64 화면용 DPI
 config LV_DPI_DEF
     default 96
 
@@ -81,8 +78,7 @@ endif # LVGL
 
 endif
 
-# DONGLE_STATUS_SERIAL 정의를 파일 맨 아래로 이동
-# (if 블록 밖에 있어야 함)
+# DONGLE_STATUS_SERIAL 정의
 config DONGLE_STATUS_SERIAL
     bool "Enable dongle status serial output"
     default n
