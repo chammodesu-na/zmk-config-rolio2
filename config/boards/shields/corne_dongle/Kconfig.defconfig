@@ -18,9 +18,9 @@ config BT_MAX_CONN
 config BT_MAX_PAIRED
     default 5
 
-# Dongle Status Serial 활성화
-config DONGLE_STATUS_SERIAL
-    default y
+# 이 부분 삭제:
+# config DONGLE_STATUS_SERIAL
+#     default y
 
 endif
 
@@ -58,10 +58,10 @@ endif # LVGL
 
 endif
 
-# DONGLE_STATUS_SERIAL 정의
-config DONGLE_STATUS_SERIAL
-    bool "Enable dongle status serial output"
-    default n
-    depends on SHIELD_CORNE_DONGLE
-    help
-      Enable USB serial output for dongle status information
+# 맨 아래 이 부분도 전체 삭제:
+# config DONGLE_STATUS_SERIAL
+#     bool "Enable dongle status serial output"
+#     default n
+#     depends on SHIELD_CORNE_DONGLE
+#     help
+#       Enable USB serial output for dongle status information
