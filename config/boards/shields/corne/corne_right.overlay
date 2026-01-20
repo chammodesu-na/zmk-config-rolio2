@@ -10,15 +10,6 @@
     col-offset = <6>;
 };
 
-/ {
-    chosen {
-        /delete-property/ zephyr,display;  // OLED chosen 제거
-    };
-};
-
-&oled {
-    status = "disabled";  // OLED 비활성화
-};
 
 &kscan0 {
     col-gpios
