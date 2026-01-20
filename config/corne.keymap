@@ -66,7 +66,7 @@
 
             #binding-cells = <2>;
             tapping-term-ms = <250>;
-            flavor = "tap-preferred";
+            flavor = "hold-preferred";
         };
 
         shiftorcaps: shiftorcaps {
